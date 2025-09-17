@@ -5,6 +5,7 @@ import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -12,6 +13,8 @@ import javafx.stage.Stage;
  * https://github.com/zyd-074/Vanier_F25_420-SF3-RE_Lab03.git
  */
 public class YuDuoZhang_Lab03 extends Application{
+    // Status Message Creation
+    static Label statusMessage = new Label();
 
     /**
      * @param args the command line arguments
@@ -19,12 +22,6 @@ public class YuDuoZhang_Lab03 extends Application{
     public static void main(String[] args) {
         launch(args);
     }
-    
-    // TextField Creation
-    TextField userFName = new TextField();
-    TextField userLName = new TextField();
-    TextField userEmail = new TextField();
-    PasswordField userPW = new PasswordField();
 
     @Override
     public void start(Stage stage) {
@@ -42,7 +39,12 @@ public class YuDuoZhang_Lab03 extends Application{
         Label lastName = new Label("Last Name: ");
         Label email = new Label("Email: ");
         Label password = new Label("Password: ");
-        Label statusMessage = new Label();
+
+        // TextField Creation
+        TextField userFName = new TextField();
+        TextField userLName = new TextField();
+        TextField userEmail = new TextField();
+        PasswordField userPW = new PasswordField();
         
         // Button creation
         Button register = new Button("Register");
@@ -72,11 +74,14 @@ public class YuDuoZhang_Lab03 extends Application{
         });
         
         // Implementation for Register
-        register.setOnAction(e -> {
-            if (checkFieldStatus()) {
-                register.setDisable(false);
-            }
-        });
+        register.setOnMouseEntered(e -> {
+                if (checkFieldStatus(userFName.getText(),
+                userLName.getText(),
+                userEmail.getText(),
+                userPW.getText())) {
+                    register.setDisable(false);
+                }
+            });
         
         // Scene SetUp + show
         Scene scene = new Scene(root, 400, 300);
@@ -84,11 +89,49 @@ public class YuDuoZhang_Lab03 extends Application{
         stage.show();
     }
     
-    public static boolean checkFieldStatus() {
+    public boolean checkFieldStatus(String fName, String lName, String email, String pw) {
+        boolean hasFName = false;
+        boolean hasLName = false;
+        boolean hasEmail = false;
+        boolean hasPW = false;
         
+        if (fName.isBlank() == false) {
+            hasFName = true;
+        } else {
+            statusMessage.setTextFill(Color.FIREBRICK);
+            statusMessage.setText("Please enter your first name");
+        }
+        
+        if (lName.isBlank() == false) {
+            hasLName = true;
+        } else {
+            statusMessage.setTextFill(Color.FIREBRICK);
+            statusMessage.setText("Please enter your last name");
+        }
+        
+        if (email.isBlank() == false) {
+            hasEmail = true;
+        } else {
+            statusMessage.setTextFill(Color.FIREBRICK);
+            statusMessage.setText("Please enter your last name");
+        }
+        
+        if (pw.isBlank() == false) {
+            hasPW = true;
+        } else {
+            statusMessage.setTextFill(Color.FIREBRICK);
+            statusMessage.setText("Please enter your last name");
+        }
+        
+        return hasFName && hasLName && hasEmail && hasPW;
     }
     
-    public static boolean checkEmailStatus() {
+    public boolean checkEmailStatus(String email) {
+        return true;
+    }
+    
+    public boolean checkPWStatus(String pw) {
         
+        return true;
     }
 }
