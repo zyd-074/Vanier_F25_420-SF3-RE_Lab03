@@ -63,7 +63,7 @@ public class YuDuoZhang_Lab03 extends Application{
         elements.add(userEmail, 1, 2);
         elements.add(userPW, 1, 3);
         elements.add(clear, 1, 4);
-        elements.add(statusMessage, 0, 5);
+        root.setBottom(statusMessage);
         
         // Implementation for Clear
         clear.setOnAction(e -> {
@@ -78,6 +78,9 @@ public class YuDuoZhang_Lab03 extends Application{
             if (checkEmailStatus(userEmail.getText()) && checkPWStatus(userPW.getText())) {
                 statusMessage.setTextFill(Color.GREEN);
                 statusMessage.setText("Welcome, " + userFName.getText());
+            } else {
+                statusMessage.setTextFill(Color.FIREBRICK);
+                statusMessage.setText("Password must contain at least one digit and one character");
             }
         });
         
