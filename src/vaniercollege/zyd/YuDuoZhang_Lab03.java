@@ -113,6 +113,14 @@ public class YuDuoZhang_Lab03 extends Application{
         stage.show();
     }
     
+    /**
+     * Checks if all fields contains something
+     * @param fName user first name
+     * @param lName user last name
+     * @param email user email
+     * @param pw user password
+     * @return  true or false
+     */
     public boolean checkFieldStatus(String fName, String lName, String email, String pw) {
         boolean hasFName = false;
         boolean hasLName = false;
@@ -150,10 +158,20 @@ public class YuDuoZhang_Lab03 extends Application{
         return hasFName && hasLName && hasEmail && hasPW;
     }
     
+    /**
+     * Checks if the email contains '@' and a domain
+     * @param email user Email
+     * @return true or false
+     */
     public boolean checkEmailStatus(String email) {
         return email.contains("@") && email.contains(".");
     }
     
+    /**
+     * Checks if the Password has at least one digit and one letter
+     * @param pw user Password
+     * @return true or false 
+     */
     public boolean checkPWStatus(String pw) {
         char[] charPW = pw.toCharArray();
         boolean hasDigit = false;
