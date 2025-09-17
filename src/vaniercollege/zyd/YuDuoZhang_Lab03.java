@@ -23,6 +23,7 @@ public class YuDuoZhang_Lab03 extends Application{
     @Override
     public void start(Stage stage) {
         // Initial Elements Set Up
+        // Layout SetUp
         BorderPane root = new BorderPane();
         GridPane elements = new GridPane();
         elements.setPadding(new Insets(15,15,15,15));
@@ -30,21 +31,25 @@ public class YuDuoZhang_Lab03 extends Application{
         elements.setVgap(10);
         root.setCenter(elements);
         
+        // Label creation
         Label firstName = new Label("First Name: ");
         Label lastName = new Label("Last Name: ");
         Label email = new Label("Email: ");
         Label password = new Label("Password: ");
         Label statusMessage = new Label();
         
+        // TextField Creation
         TextField userFName = new TextField();
         TextField userLName = new TextField();
         TextField userEmail = new TextField();
         PasswordField userPW = new PasswordField();
         
+        // Button creation
         Button register = new Button("Register");
         register.setDisable(true);
         Button clear = new Button("Clear");
         
+        // Position Set Up
         elements.setAlignment(Pos.TOP_LEFT);
         elements.add(firstName, 0, 0);
         elements.add(lastName, 0, 1);
@@ -57,7 +62,7 @@ public class YuDuoZhang_Lab03 extends Application{
         elements.add(userPW, 1, 3);
         elements.add(clear, 1, 4);
         
-        
+        // Scene SetUp + show
         Scene scene = new Scene(root, 400, 300);
         stage.setScene(scene);
         stage.show();
