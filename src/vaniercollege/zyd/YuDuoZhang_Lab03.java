@@ -61,6 +61,15 @@ public class YuDuoZhang_Lab03 extends Application{
         elements.add(userEmail, 1, 2);
         elements.add(userPW, 1, 3);
         elements.add(clear, 1, 4);
+        elements.add(statusMessage, 0, 5);
+        
+        // Implementation for Clear
+        clear.setOnAction(e -> {
+            userFName.setText("");
+            userLName.setText("");
+            userEmail.setText("");
+            userPW.setText("");
+        });
         
         // Scene SetUp + show
         Scene scene = new Scene(root, 400, 300);
