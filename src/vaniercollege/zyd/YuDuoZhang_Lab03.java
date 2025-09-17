@@ -19,6 +19,12 @@ public class YuDuoZhang_Lab03 extends Application{
     public static void main(String[] args) {
         launch(args);
     }
+    
+    // TextField Creation
+    TextField userFName = new TextField();
+    TextField userLName = new TextField();
+    TextField userEmail = new TextField();
+    PasswordField userPW = new PasswordField();
 
     @Override
     public void start(Stage stage) {
@@ -37,12 +43,6 @@ public class YuDuoZhang_Lab03 extends Application{
         Label email = new Label("Email: ");
         Label password = new Label("Password: ");
         Label statusMessage = new Label();
-        
-        // TextField Creation
-        TextField userFName = new TextField();
-        TextField userLName = new TextField();
-        TextField userEmail = new TextField();
-        PasswordField userPW = new PasswordField();
         
         // Button creation
         Button register = new Button("Register");
@@ -71,10 +71,24 @@ public class YuDuoZhang_Lab03 extends Application{
             userPW.setText("");
         });
         
+        // Implementation for Register
+        register.setOnAction(e -> {
+            if (checkFieldStatus()) {
+                register.setDisable(false);
+            }
+        });
+        
         // Scene SetUp + show
         Scene scene = new Scene(root, 400, 300);
         stage.setScene(scene);
         stage.show();
     }
     
+    public static boolean checkFieldStatus() {
+        
+    }
+    
+    public static boolean checkEmailStatus() {
+        
+    }
 }
