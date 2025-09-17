@@ -74,14 +74,38 @@ public class YuDuoZhang_Lab03 extends Application{
         });
         
         // Implementation for Register
-        register.setOnMouseEntered(e -> {
-                if (checkFieldStatus(userFName.getText(),
-                userLName.getText(),
-                userEmail.getText(),
-                userPW.getText())) {
-                    register.setDisable(false);
-                }
-            });
+        register.setOnMouseClicked(e -> {
+            if (checkEmailStatus(userEmail.getText()) && checkPWStatus(userPW.getText())) {
+                statusMessage.setTextFill(Color.GREEN);
+                statusMessage.setText("Welcome, " + userFName.getText());
+            }
+        });
+        
+        // Update FieldStatus
+        userFName.setOnKeyTyped(e -> {
+            if (checkFieldStatus(userFName.getText(), userLName.getText(), userEmail.getText(), userPW.getText())) {
+                statusMessage.setText("");
+                register.setDisable(false);
+            }
+        });
+        userLName.setOnKeyTyped(e -> {
+            if (checkFieldStatus(userFName.getText(), userLName.getText(), userEmail.getText(), userPW.getText())) {
+                statusMessage.setText("");
+                register.setDisable(false);
+            }
+        });
+        userEmail.setOnKeyTyped(e -> {
+            if (checkFieldStatus(userFName.getText(), userLName.getText(), userEmail.getText(), userPW.getText())) {
+                statusMessage.setText("");
+                register.setDisable(false);
+            }
+        });
+        userPW.setOnKeyTyped(e -> {
+            if (checkFieldStatus(userFName.getText(), userLName.getText(), userEmail.getText(), userPW.getText())) {
+                statusMessage.setText("");
+                register.setDisable(false);
+            }
+        });
         
         // Scene SetUp + show
         Scene scene = new Scene(root, 400, 300);
@@ -113,25 +137,36 @@ public class YuDuoZhang_Lab03 extends Application{
             hasEmail = true;
         } else {
             statusMessage.setTextFill(Color.FIREBRICK);
-            statusMessage.setText("Please enter your last name");
+            statusMessage.setText("Please enter your email");
         }
         
         if (pw.isBlank() == false) {
             hasPW = true;
         } else {
             statusMessage.setTextFill(Color.FIREBRICK);
-            statusMessage.setText("Please enter your last name");
+            statusMessage.setText("Please enter your password");
         }
         
         return hasFName && hasLName && hasEmail && hasPW;
     }
     
     public boolean checkEmailStatus(String email) {
-        return true;
+        return email.contains("@") && email.contains(".");
     }
     
     public boolean checkPWStatus(String pw) {
+        char[] charPW = pw.toCharArray();
+        boolean hasDigit = false;
+        boolean hasLetter = false;
         
-        return true;
+        for (char c : charPW) {
+            if (Character.isDigit(c)) {
+                hasDigit = true;
+            } else if(Character.isLetter(c)) {
+                hasLetter = true;
+            }
+        }
+        
+        return hasDigit && hasLetter;
     }
 }
