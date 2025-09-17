@@ -25,6 +25,9 @@ public class YuDuoZhang_Lab03 extends Application{
         // Initial Elements Set Up
         BorderPane root = new BorderPane();
         GridPane elements = new GridPane();
+        elements.setPadding(new Insets(15,15,15,15));
+        elements.setHgap(10);
+        elements.setVgap(10);
         root.setCenter(elements);
         
         Label firstName = new Label("First Name: ");
@@ -44,15 +47,15 @@ public class YuDuoZhang_Lab03 extends Application{
         
         elements.setAlignment(Pos.TOP_LEFT);
         elements.add(firstName, 0, 0);
-        elements.add(lastName, 1, 0);
-        elements.add(email, 2, 0);
-        elements.add(password, 3, 0);
-        elements.add(register, 4, 0);
-        elements.add(userFName, 0, 1);
+        elements.add(lastName, 0, 1);
+        elements.add(email, 0, 2);
+        elements.add(password, 0, 3);
+        elements.add(register, 0, 4);
+        elements.add(userFName, 1, 0);
         elements.add(userLName, 1, 1);
-        elements.add(userEmail, 2, 1);
-        elements.add(userPW, 3, 1);
-        elements.add(clear, 4, 1);
+        elements.add(userEmail, 1, 2);
+        elements.add(userPW, 1, 3);
+        elements.add(clear, 1, 4);
         
         
         Scene scene = new Scene(root, 400, 300);
